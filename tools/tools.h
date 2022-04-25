@@ -13,4 +13,4 @@ void PrintConsoleBottomRight(string str);
 void wait(string text = "╭─────────────────────────────────────╮ \n│ Нажмите любую кнопку чтобы продол-  │ \n│ жить...                             │ \n╰─────────────────────────────────────╯ \n");
 void waitForEsc(string text = "");
 void printTitle(string title, bool seamless = true);
-bool acceptQuery(string query);
+bool acceptQuery(string query, bool custom = false);

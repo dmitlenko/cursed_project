@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <queue>
+#include <functional>
 
 #include "computer/computer.h"
 #include "../tools/tools.h"
@@ -12,7 +13,7 @@ class pc_room {
 	
 	priority_queue<computer> pc_pq;
 	computer edit_helper(computer);
-	priority_queue<computer> find_helper(float valuef, int valuei, string values, int field);
+	priority_queue<computer> find_helper(string values, int field);
 public:
 	void newlist();
 	void print();
