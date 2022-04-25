@@ -1,9 +1,12 @@
 #include "pc_room.h"
 
 float str_to_float(string s) {
-	// Check string is float
-	if (!regex_match(s,regex("/(\d+(?:\.\d+)?)/"))) return -1;
-	return atof(s.c_str());
+	// just f*cing translate
+	try {
+		return stof(s);
+	} catch (...) {
+		return 0;
+	}
 }
 
 void pc_room::print() {
