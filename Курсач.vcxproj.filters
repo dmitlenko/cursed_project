@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Исходные файлы\menu">
+      <UniqueIdentifier>{d19454fd-6678-4679-a01d-06292acdda50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\pc_room">
+      <UniqueIdentifier>{6df14c1c-4df8-47c9-9447-bd902eab2e10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\program_data">
+      <UniqueIdentifier>{27486dce-c74c-4159-971a-0d51e23b7883}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\tools">
+      <UniqueIdentifier>{e2aa3f7a-e697-496f-95e1-30bd06e7612b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\pc_room\computer">
+      <UniqueIdentifier>{0663e3de-cb9f-48b2-99a5-19f5a242c89b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\pc_room\computer\mouse">
+      <UniqueIdentifier>{b4b1f20a-d65b-46c2-b3fd-24dde5cf4240}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\pc_room\computer\keyboard">
+      <UniqueIdentifier>{cbddfffb-3823-49ad-abc7-435d1bab9f9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\pc_room\computer\monitor">
+      <UniqueIdentifier>{2e27bc44-f02b-4395-9ec9-0a18186ae1b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\pc_room\computer\system_block">
+      <UniqueIdentifier>{128556f2-be76-40a0-8b88-98f4c567d671}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="menu\menu.cpp">
+      <Filter>Исходные файлы\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="pc_room\pc_room.cpp">
+      <Filter>Исходные файлы\pc_room</Filter>
+    </ClCompile>
+    <ClCompile Include="program_data\program_data.cpp">
+      <Filter>Исходные файлы\program_data</Filter>
+    </ClCompile>
+    <ClCompile Include="tools\tools.cpp">
+      <Filter>Исходные файлы\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="pc_room\computer\computer.cpp">
+      <Filter>Исходные файлы\pc_room\computer</Filter>
+    </ClCompile>
+    <ClCompile Include="pc_room\computer\keyboard\keyboard.cpp">
+      <Filter>Исходные файлы\pc_room\computer\keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="pc_room\computer\monitor\monitor.cpp">
+      <Filter>Исходные файлы\pc_room\computer\monitor</Filter>
+    </ClCompile>
+    <ClCompile Include="pc_room\computer\mouse\mouse.cpp">
+      <Filter>Исходные файлы\pc_room\computer\mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="pc_room\computer\system_block\system_block.cpp">
+      <Filter>Исходные файлы\pc_room\computer\system_block</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="menu\menu.h">
+      <Filter>Исходные файлы\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="pc_room\pc_room.h">
+      <Filter>Исходные файлы\pc_room</Filter>
+    </ClInclude>
+    <ClInclude Include="program_data\program_data.h">
+      <Filter>Исходные файлы\program_data</Filter>
+    </ClInclude>
+    <ClInclude Include="tools\tools.h">
+      <Filter>Исходные файлы\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="pc_room\computer\computer.h">
+      <Filter>Исходные файлы\pc_room\computer</Filter>
+    </ClInclude>
+    <ClInclude Include="pc_room\computer\keyboard\keyboard.h">
+      <Filter>Исходные файлы\pc_room\computer\keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="pc_room\computer\monitor\monitor.h">
+      <Filter>Исходные файлы\pc_room\computer\monitor</Filter>
+    </ClInclude>
+    <ClInclude Include="pc_room\computer\mouse\mouse.h">
+      <Filter>Исходные файлы\pc_room\computer\mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="pc_room\computer\system_block\system_block.h">
+      <Filter>Исходные файлы\pc_room\computer\system_block</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+</Project>
