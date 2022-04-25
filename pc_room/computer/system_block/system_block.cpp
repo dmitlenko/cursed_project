@@ -18,7 +18,11 @@ ostream& operator<< (ostream& os, system_block& ss) {
 }
 
 istream& operator>> (istream& is, system_block& ss) {
-    is >> ss.cpu_type >> ss.cpu_freq >> ss.hdd_cap >> ss.sb_cd >> ss.price;
+    is >> ss.cpu_type;
+    if (!(is >> ss.cpu_freq)) ss.cpu_freq = 0;
+    if (!(is >> ss.hdd_cap)) ss.hdd_cap = 0;
+    if (!(is >> ss.sb_cd)) ss.sb_cd = 0; 
+    if (!(is >> ss.price)) ss.price = 0;
     return is;
 }
 

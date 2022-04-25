@@ -14,7 +14,9 @@ ostream& operator<< (ostream& os, mouse& ss) {
 }
 
 istream& operator>> (istream& is, mouse& ss) {
-    is >> ss.type >> ss.keys >> ss.price;
+    is >> ss.type;
+    if (!(is >> ss.keys)) ss.keys = 0;
+    if (!(is >> ss.price)) ss.price = 0.0;
     return is;
 }
 

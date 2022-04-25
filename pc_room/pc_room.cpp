@@ -1,5 +1,10 @@
 #include "pc_room.h"
 
+float str_to_float(string s) {
+	// Check string is float
+
+}
+
 void pc_room::print() {
 	printTitle("Вывести список", false);
 	cout << "╰─────────────────────────────────────╯ \n";

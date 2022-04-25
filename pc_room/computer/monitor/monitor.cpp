@@ -14,7 +14,9 @@ ostream& operator<< (ostream& os, monitor& ss) {
 }
 
 istream& operator>> (istream& is, monitor& ss) {
-    is >> ss.diagonal >> ss.freq >> ss.price;
+    if (!(is >> ss.diagonal)) ss.diagonal = 0;
+    if (!(is >> ss.freq)) ss.freq = 0;
+    if (!(is >> ss.price)) ss.price = 0.0;
     return is;
 }
 

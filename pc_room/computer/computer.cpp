@@ -18,7 +18,8 @@ ofstream& operator<< (ofstream& os, const computer& ss) {
 }
 
 ifstream& operator>> (ifstream& is, computer& ss) {
-    is >> (system_block&)ss >> (monitor&)ss >> (keyboard&)ss >> (mouse&)ss >> ss.price;
+    is >> (system_block&)ss >> (monitor&)ss >> (keyboard&)ss >> (mouse&)ss;
+    if(!(is>>ss.price)) ss.price = time(NULL);
     return is;
 }
 
