@@ -8,7 +8,14 @@ ostream& operator<< (ostream& os, const computer& ss) {
 }
 
 istream& operator>> (istream& is, computer& ss) {
-    is >> (system_block&)ss >> (monitor&)ss >> (keyboard&)ss >> (mouse&)ss >> ss.price;
+    is >> (system_block&)ss >> (monitor&)ss >> (keyboard&)ss >> (mouse&)ss ;
+
+    while (cout << "╭─────────────────────────────────────╮ \n│ Введите цену сборк ПК:             │\n╰─────────────────────────────────────╯\n " && !(is >> ss.price)) {
+        is.clear(); //clear bad input flag
+        is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cout << "╭─────────────────────────────────────╮ \n│ Введено неверное значение!          │\n╰─────────────────────────────────────╯\n";
+    }
+
     return is;
 }
 
@@ -18,14 +25,9 @@ ofstream& operator<< (ofstream& os, const computer& ss) {
 }
 
 ifstream& operator>> (ifstream& is, computer& ss) {
-    is >> (system_block&)ss >> (monitor&)ss >> (keyboard&)ss >> (mouse&)ss;
+    is >> (system_block&)ss >> (monitor&)ss >> (keyboard&)ss >> (mouse&)ss >> ss.price;
 
-    while (cout << "╭─────────────────────────────────────╮ \n│ Введите цену сборк ПК:             │\n╰─────────────────────────────────────╯\n " && !(is >> ss.price)) {
-        is.clear(); //clear bad input flag
-        is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        cout << "╭─────────────────────────────────────╮ \n│ Введено неверное значение!          │\n╰─────────────────────────────────────╯\n";
-    }
-
+    
     return is;
 }
 
