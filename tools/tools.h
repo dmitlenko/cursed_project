@@ -14,3 +14,4 @@ void wait(string text = "╭─────────────────�
 void waitForEsc(string text = "");
 void printTitle(string title, bool seamless = true);
 bool acceptQuery(string query, bool custom = false);
+void message(string mess, bool custom = false, bool space = false);

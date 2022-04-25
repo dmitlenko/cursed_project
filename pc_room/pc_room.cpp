@@ -48,7 +48,7 @@ void pc_room::print(string title, priority_queue<computer> v) {
 	}
 
 	if (acceptQuery("Сохранить в файл?")) {
-		cout << "╭─────────────────────────────────────╮ \n│ Введите имя файла:                  │ \n╰─────────────────────────────────────╯ \n ";
+		message("Введите имя файла:", false, true);
 		cin >> namef;
 		ofstream g(namef, ios::out);
 
@@ -62,11 +62,9 @@ void pc_room::print(string title, priority_queue<computer> v) {
 				t.pop();
 			}
 			g.close();
-			cout << "╭─────────────────────────────────────╮ \n│ Сохранено                           │ \n╰─────────────────────────────────────╯ \n";
+			message("Сохранено");
 		}
-		else {
-			cout << "╭─────────────────────────────────────╮ \n│ Файл не найден!                     │ \n╰─────────────────────────────────────╯ \n";
-		}
+		else message("Файл не найден!");
 	}
 
 	wait();
@@ -100,7 +98,7 @@ void pc_room::load() {
 	if (acceptQuery("Загрузить из стороннего файла?")) {
 		printTitle("Открыть список", false);
 		cout << "╰─────────────────────────────────────╯ \n";
-		cout << "╭─────────────────────────────────────╮ \n│ Введите имя файла:                  │ \n╰─────────────────────────────────────╯ \n ";
+		message("Введите имя файла:",false,true);
 		cin >> namef;
 	}
 
@@ -115,11 +113,9 @@ void pc_room::load() {
 			pc_pq.push(t);
 		};
 		f.close();
-		cout << "╭─────────────────────────────────────╮ \n│ Загружено                           │ \n╰─────────────────────────────────────╯ \n";
+		message("Загружено");
 	}
-	else {
-		cout << "╭─────────────────────────────────────╮ \n│ Файл не найден!                     │ \n╰─────────────────────────────────────╯ \n";
-	}
+	else message("Файл не найден!");
 
 	wait();
 }
@@ -133,7 +129,7 @@ void pc_room::save() {
 
 		printTitle("Сохранить список", false);
 		cout << "╰─────────────────────────────────────╯ \n";
-		cout << "╭─────────────────────────────────────╮ \n│ Введите имя файла:                  │ \n╰─────────────────────────────────────╯ \n ";
+		message("Введите имя файла:",false,true);
 		cin >> namef;
 	}
 
@@ -149,11 +145,10 @@ void pc_room::save() {
 			t.pop();
 		}
 		g.close();
-		cout << "╭─────────────────────────────────────╮ \n│ Сохранено                           │ \n╰─────────────────────────────────────╯ \n";
+		message("Сохранено");
 	}
-	else {
-		cout << "╭─────────────────────────────────────╮ \n│ Файл не найден!                     │ \n╰─────────────────────────────────────╯ \n";
-	}
+	else message("Файл не найден!");
+		
 	wait();
 }
 
@@ -171,7 +166,7 @@ void pc_room::newlist() {
 
 			add(true);
 
-			if (!acceptQuery("╭─────────────────────────────────────╮ \n│ Добавить еще ПК?                    │ \n╰─────────────────────────────────────╯ \n")) return;
+			if (!acceptQuery("Добавить еще ПК?")) return;
 		}
 	}
 }
@@ -185,7 +180,7 @@ void pc_room::del() {
 	cin >> n;
 
 	if (n < 1 || n > pc_pq.size()) {
-		cout << "╭─────────────────────────────────────╮ \n│ Элемент не существует!              │ \n╰─────────────────────────────────────╯ \n";
+		message("Элемент не существует! ");
 		wait();
 	}
 	else {
@@ -205,7 +200,7 @@ void pc_room::del() {
 			pq.pop();
 		}
 
-		cout << "╭─────────────────────────────────────╮ \n│ Элемент удален.                     │ \n╰─────────────────────────────────────╯ \n";
+		message("Элемент удален. ");
 		wait();
 	}
 }
@@ -273,19 +268,19 @@ computer pc_room::edit_helper(computer p) {
 			case 27: if (acceptQuery("Завершить редактирование?")) return computer(sb, mr, kb, ms, pr);
 			case '1': switch (subMenu) {
 					case 0:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите тип ЦП:                     │ \n╰─────────────────────────────────────╯ \n "; cin >> string_buff;
+						message("Введите тип ЦП:",false,true); cin >> string_buff;
 						sb.setCPUType(string_buff);
 						break;
 					case 1:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите диагональ:                  │ \n╰─────────────────────────────────────╯ \n "; cin >> string_buff;
+						message("Введите диагональ:", false, true); cin >> string_buff;
 						mr.setDiaglonal(str_to_float(string_buff));
 						break;
 					case 2:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите тип клавиатуры:             │ \n╰─────────────────────────────────────╯ \n "; cin >> string_buff;
+						message("Введите тип клавиатуры:", false, true); cin >> string_buff;
 						kb.setType(string_buff);
 						break;
 					case 3:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите тип мыши:                   │ \n╰─────────────────────────────────────╯ \n "; cin >> string_buff;
+						message("Введите тип мыши:", false, true); cin >> string_buff;
 						ms.setType(string_buff);
 						break;
 					default:
@@ -294,19 +289,19 @@ computer pc_room::edit_helper(computer p) {
 				break;
 			case '2': switch (subMenu) {
 					case 0:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите частоту ЦП:                 │ \n╰─────────────────────────────────────╯ \n "; cin >> string_buff;
+						message("Введите частоту ЦП:", false, true); cin >> string_buff;
 						sb.setCPUFreq(str_to_float(string_buff));
 						break;
 					case 1:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите частоту:                    │ \n╰─────────────────────────────────────╯ \n "; cin >> string_buff;
+						message("Введите частоту:", false, true); cin >> string_buff;
 						mr.setFreq(int(str_to_float(string_buff)));
 						break;
 					case 2:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите количество кнопок:          │ \n╰─────────────────────────────────────╯ \n "; cin >> string_buff;
+						message("Введите количество кнопок:", false, true); cin >> string_buff;
 						kb.setKeys(int(str_to_float(string_buff)));
 						break;
 					case 3:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите количество кнопок:          │ \n╰─────────────────────────────────────╯ \n "; cin >> string_buff;
+						message("Введите количество кнопок: ", false, true); cin >> string_buff;
 						ms.setKeys(int(str_to_float(string_buff)));
 						break;
 					default: break;
@@ -314,19 +309,19 @@ computer pc_room::edit_helper(computer p) {
 				break;
 			case '3': switch (subMenu) {
 					case 0:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите вместимость ЖД:             │ \n╰─────────────────────────────────────╯ \n "; cin >> string_buff;
+						message("Введите вместимость ЖД:", false, true); cin >> string_buff;
 						sb.setHDDCap(str_to_float(string_buff));
 						break;
 					case 1:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите цену:                       │ \n╰─────────────────────────────────────╯ \n "; cin >> string_buff;
+						message("Введите цену:  ", false, true); cin >> string_buff;
 						mr.setPrice(str_to_float(string_buff));
 						break;
 					case 2:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите цену:                       │ \n╰─────────────────────────────────────╯ \n "; cin >> string_buff;
+						message("Введите цену: ", false, true); cin >> string_buff;
 						kb.setPrice(str_to_float(string_buff));
 						break;
 					case 3:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите цену:                       │ \n╰─────────────────────────────────────╯ \n "; cin >> string_buff;
+						message("Введите цену: ", false, true); cin >> string_buff;
 						ms.setPrice(str_to_float(string_buff));
 						break;
 					default: break;
@@ -341,7 +336,7 @@ computer pc_room::edit_helper(computer p) {
 				break;
 			case '5': switch (subMenu) {
 					case 0:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите цену:                       │ \n╰─────────────────────────────────────╯ \n "; cin >> string_buff;
+						message("Введите цену:", false, true); cin >> string_buff;
 						sb.setPrice(str_to_float(string_buff));
 						break;
 					default: break;
@@ -364,7 +359,7 @@ void pc_room::edit() {
 	cin >> n;
 
 	if (n < 1 || n > pc_pq.size()) {
-		cout << "╭─────────────────────────────────────╮ \n│ Элемент не существует!              │ \n╰─────────────────────────────────────╯ \n";
+		message("Элемент не существует! ");
 		wait();
 	}
 	else {
@@ -482,19 +477,19 @@ void pc_room::find() {
 			case 27: if (acceptQuery("Завершить поиск?")) return; 
 			case '1': switch (subMenu) {
 					case 0:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите тип ЦП:                     │ \n╰─────────────────────────────────────╯ \n "; std::cin >> string_buff;
+						message("Введите тип ЦП: ", false, true); cin >> string_buff;
 						print("Результаты поиска", find_helper(string_buff, 1));
 						break;
 					case 1:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите диагональ:                  │ \n╰─────────────────────────────────────╯ \n "; std::cin >> string_buff;
+						message("Введите диагональ:", false, true); cin >> string_buff;
 						print("Результаты поиска", find_helper(string_buff, 6));
 						break;
 					case 2:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите тип клавиатуры:             │ \n╰─────────────────────────────────────╯ \n "; std::cin >> string_buff;
+						message("Введите тип клавиатуры:", false, true); cin >> string_buff;
 						print("Результаты поиска", find_helper(string_buff, 12));
 						break;
 					case 3:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите тип мыши:                   │ \n╰─────────────────────────────────────╯ \n "; std::cin >> string_buff;
+						message("Введите тип мыши:", false, true); cin >> string_buff;
 						print("Результаты поиска", find_helper(string_buff, 9));
 						break;
 					default: break;
@@ -502,19 +497,19 @@ void pc_room::find() {
 				break;
 			case '2': switch (subMenu) {
 					case 0:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите частоту ЦП:                 │ \n╰─────────────────────────────────────╯ \n "; std::cin >> string_buff;
+						message("Введите частоту ЦП:", false, true); cin >> string_buff;
 						print("Результаты поиска", find_helper(string_buff, 2));
 						break;
 					case 1:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите частоту:                    │ \n╰─────────────────────────────────────╯ \n "; std::cin >> string_buff;
+						message("Введите частоту: ", false, true); cin >> string_buff;
 						print("Результаты поиска", find_helper(string_buff, 6));
 						break;
 					case 2:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите количество кнопок:          │ \n╰─────────────────────────────────────╯ \n "; std::cin >> string_buff;
+						message("Введите количество кнопок:", false, true); cin >> string_buff;
 						print("Результаты поиска", find_helper(string_buff, 13));
 						break;
 					case 3:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите количество кнопок:          │ \n╰─────────────────────────────────────╯ \n "; std::cin >> string_buff;
+						message("Введите количество кнопок:", false, true); cin >> string_buff;
 						print("Результаты поиска", find_helper(string_buff, 10));
 						break;
 					default: break;
@@ -522,19 +517,19 @@ void pc_room::find() {
 				break;
 			case '3': switch (subMenu) {
 					case 0:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите вместимость ЖД:             │ \n╰─────────────────────────────────────╯ \n "; std::cin >> string_buff;
+						message("Введите вместимость ЖД:", false, true); cin >> string_buff;
 						print("Результаты поиска", find_helper(string_buff, 3));
 						break;
 					case 1:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите цену:                       │ \n╰─────────────────────────────────────╯ \n "; std::cin >> string_buff;
+						message("Введите цену:", false, true); cin >> string_buff;
 						print("Результаты поиска", find_helper(string_buff, 8));
 						break;
 					case 2:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите цену:                       │ \n╰─────────────────────────────────────╯ \n "; std::cin >> string_buff;
+						message("Введите цену:", false, true); cin >> string_buff;
 						print("Результаты поиска", find_helper(string_buff, 14));
 						break;
 					case 3:
-						cout << "╭─────────────────────────────────────╮ \n│ Введите цену:                       │ \n╰─────────────────────────────────────╯ \n "; std::cin >> string_buff;
+						message("Введите цену:", false, true); cin >> string_buff;
 						print("Результаты поиска", find_helper(string_buff, 11));
 						break;
 					default: break;
@@ -550,7 +545,7 @@ void pc_room::find() {
 				break;
 			case '5': switch (subMenu) {
 					case 0: 
-						cout << "╭─────────────────────────────────────╮ \n│ Введите цену:                       │ \n╰─────────────────────────────────────╯ \n "; std::cin >> string_buff;
+						message("Введите цену:", false, true); cin >> string_buff;
 						print("Результаты поиска", find_helper(string_buff, 5)); break;
 					default: break;
 				}

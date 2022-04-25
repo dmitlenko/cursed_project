@@ -47,14 +47,25 @@ void printTitle(string title, bool seamless) {
 	if (seamless) cout << "├─────────────────────────────────────┤ \n";
 }
 
+void message(string mess, bool custom, bool space) {
+	if (custom) cout << mess;
+	else {
+		int len = wstring_convert< codecvt_utf8<char32_t>, char32_t >{}.from_bytes(mess).size();
+		cout << "╭─────────────────────────────────────╮ \n"
+			 << "│ " << mess << string(35 - len, ' ') << " │ \n"
+			 << "╰─────────────────────────────────────╯ \n";
+		if (space) cout << ' ';
+	}
+}
+
 bool acceptQuery(string query, bool custom) {
 	int len = wstring_convert< codecvt_utf8<char32_t>, char32_t >{}.from_bytes(query).size();
 	
 	if (!custom)
 		cout << "╭─────────────────────────────────────╮ \n"
-		<< "│ " << query << string(35 - len, ' ') << " │ \n"
-		<< "╰─────────────────────────────────────╯ \n"
-		<< " (y/n): ";
+			 << "│ " << query << string(35 - len, ' ') << " │ \n"
+			 << "╰─────────────────────────────────────╯ \n"
+			 << " (y/n): ";
 	else cout << query << " (y/n): ";
 	
 	while (true) {
