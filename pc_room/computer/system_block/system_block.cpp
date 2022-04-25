@@ -18,11 +18,33 @@ ostream& operator<< (ostream& os, system_block& ss) {
 }
 
 istream& operator>> (istream& is, system_block& ss) {
-    is >> ss.cpu_type;
-    if (!(is >> ss.cpu_freq)) ss.cpu_freq = 0;
-    if (!(is >> ss.hdd_cap)) ss.hdd_cap = 0;
-    if (!(is >> ss.sb_cd)) ss.sb_cd = 0; 
-    if (!(is >> ss.price)) ss.price = 0;
+    cout << "╭─────────────────────────────────────╮ \n│ Введите тип ЦП:                     │\n╰─────────────────────────────────────╯\n ";
+    getline(is, ss.cpu_type);
+
+    while (cout << "╭─────────────────────────────────────╮ \n│ Введите частоту ЦП в ГГц:           │\n╰─────────────────────────────────────╯\n " && !(is >> ss.cpu_freq)) {
+        is.clear(); //clear bad input flag
+        is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cout << "╭─────────────────────────────────────╮ \n│ Введено неверное значение!          │\n╰─────────────────────────────────────╯\n";
+    }
+
+    while (cout << "╭─────────────────────────────────────╮ \n│ Введите вместимость ЖД в ГБ:        │\n╰─────────────────────────────────────╯\n " && !(is >> ss.hdd_cap)) {
+        is.clear(); //clear bad input flag
+        is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cout << "╭─────────────────────────────────────╮ \n│ Введено неверное значение!          │\n╰─────────────────────────────────────╯\n";
+    }
+
+    while (cout << "╭─────────────────────────────────────╮ \n│ Введите наличие CD (1/0):           │\n╰─────────────────────────────────────╯\n " && !(is >> ss.sb_cd)) {
+        is.clear(); //clear bad input flag
+        is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cout << "╭─────────────────────────────────────╮ \n│ Введено неверное значение!          │\n╰─────────────────────────────────────╯\n";
+    }
+
+    while (cout << "╭─────────────────────────────────────╮ \n│ Введите цену ПК:                    │\n╰─────────────────────────────────────╯\n " && !(is >> ss.price)) {
+        is.clear(); //clear bad input flag
+        is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cout << "╭─────────────────────────────────────╮ \n│ Введено неверное значение!          │\n╰─────────────────────────────────────╯\n";
+    }
+
     return is;
 }
 

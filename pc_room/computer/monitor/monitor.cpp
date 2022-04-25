@@ -14,9 +14,25 @@ ostream& operator<< (ostream& os, monitor& ss) {
 }
 
 istream& operator>> (istream& is, monitor& ss) {
-    if (!(is >> ss.diagonal)) ss.diagonal = 0;
-    if (!(is >> ss.freq)) ss.freq = 0;
-    if (!(is >> ss.price)) ss.price = 0.0;
+	
+    while (cout << "╭─────────────────────────────────────╮ \n│ Введите диагональ монитора:         │\n╰─────────────────────────────────────╯\n " && !(is >> ss.diagonal)) {
+        is.clear(); //clear bad input flag
+        is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cout << "╭─────────────────────────────────────╮ \n│ Введено неверное значение!          │\n╰─────────────────────────────────────╯\n";
+    }
+
+    while (cout << "╭─────────────────────────────────────╮ \n│ Введите разрядность монитора:       │\n╰─────────────────────────────────────╯\n " && !(is >> ss.freq)) {
+        is.clear(); //clear bad input flag
+        is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cout << "╭─────────────────────────────────────╮ \n│ Введено неверное значение!          │\n╰─────────────────────────────────────╯\n";
+    }
+
+    while (cout << "╭─────────────────────────────────────╮ \n│ Введите цену монитора:              │\n╰─────────────────────────────────────╯\n " && !(is >> ss.price)) {
+        is.clear(); //clear bad input flag
+        is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cout << "╭─────────────────────────────────────╮ \n│ Введено неверное значение!          │\n╰─────────────────────────────────────╯\n";
+    }
+
     return is;
 }
 

@@ -19,7 +19,13 @@ ofstream& operator<< (ofstream& os, const computer& ss) {
 
 ifstream& operator>> (ifstream& is, computer& ss) {
     is >> (system_block&)ss >> (monitor&)ss >> (keyboard&)ss >> (mouse&)ss;
-    if(!(is>>ss.price)) ss.price = time(NULL);
+
+    while (cout << "╭─────────────────────────────────────╮ \n│ Введите цену сборк ПК:             │\n╰─────────────────────────────────────╯\n " && !(is >> ss.price)) {
+        is.clear(); //clear bad input flag
+        is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cout << "╭─────────────────────────────────────╮ \n│ Введено неверное значение!          │\n╰─────────────────────────────────────╯\n";
+    }
+
     return is;
 }
 

@@ -1,10 +1,12 @@
 #pragma once
 #include <string>
 #include <queue>
+#include <regex>
 
 #include "computer/computer.h"
 #include "../tools/tools.h"
 using namespace std;
+
 
 class pc_room {
 

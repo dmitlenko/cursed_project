@@ -14,9 +14,21 @@ ostream& operator<< (ostream& os, keyboard& ss) {
 }
 
 istream& operator>> (istream& is, keyboard& ss) {
-    is >> ss.type;
-    if (!(is >> ss.keys)) ss.keys = 0;
-    if (!(is >> ss.price)) ss.price = 0.0;
+    cout << "╭─────────────────────────────────────╮ \n│ Введите тип клавиатуры:             │\n╰─────────────────────────────────────╯\n";
+    getline(is, ss.type);
+
+    while (cout << "╭─────────────────────────────────────╮ \n│ Введите количество кнопок:          │\n╰─────────────────────────────────────╯\n " && !(is >> ss.keys)) {
+        is.clear(); //clear bad input flag
+        is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cout << "╭─────────────────────────────────────╮ \n│ Введено неверное значение!          │\n╰─────────────────────────────────────╯\n";
+    }
+
+    while (cout << "╭─────────────────────────────────────╮ \n│ Введите цену клавиатуры:            │\n╰─────────────────────────────────────╯\n " && !(is >> ss.price)) {
+        is.clear(); //clear bad input flag           
+        is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        cout << "╭─────────────────────────────────────╮ \n│ Введено неверное значение!          │\n╰─────────────────────────────────────╯\n";
+    }
+
     return is;
 }
 
