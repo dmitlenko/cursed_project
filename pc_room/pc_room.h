@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
 #include <queue>
-#include <regex>
 
 #include "computer/computer.h"
 #include "../tools/tools.h"
